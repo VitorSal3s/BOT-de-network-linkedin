@@ -3,7 +3,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 import time
 
 #crucial para acessar a página do usuário as informações de login
-#OBS: Nenhuma das informaçõe fornecdidaas aqui será acessado por terceiros
+#OBS: Nenhuma das informaçõe fornecdidas aqui será acessado por terceiros
 def info_login():
     login = str(input("Você já está logado no site? [s/n]"))
     if login == "n" or "N":
