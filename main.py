@@ -39,7 +39,6 @@ busca.send_keys(profissao)
 pyautogui.press("enter")
 time.sleep(10)
 
-campo_pessoas = navegador.find_element(By.CSS_SELECTOR, '[data-target-section-id="5O3aCjkkT2ehDubv1pCsnQ=="]')
-campo_pessoas.click()
+campo_pessoas = navegador.get("https://www.linkedin.com/search/results/people/?keywords=ti&origin=SWITCH_SEARCH_VERTICAL&sid=8)k")
 time.sleep(10)
 
