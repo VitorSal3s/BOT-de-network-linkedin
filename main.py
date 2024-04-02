@@ -25,7 +25,7 @@ navegador.maximize_window()
 navegador.get("https://www.linkedin.com/home")
 time.sleep(2)
 
-
+#logando com as informações de usuário
 campo_email = WebDriverWait(navegador, 10).until(EC.presence_of_element_located((By.ID, "session_key")))
 campo_email.send_keys(email)
 campo_senha = navegador.find_element(By.ID, "session_password")
@@ -33,12 +33,8 @@ campo_senha.send_keys(senha)
 campo_senha.submit()
 time.sleep(5)
 
-time.sleep(10)
-busca =  WebDriverWait(navegador, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "search-global-typeahead__input")))
-busca.send_keys(profissao)
-pyautogui.press("enter")
-time.sleep(10)
-
-campo_pessoas = navegador.get("https://www.linkedin.com/search/results/people/?keywords=ti&origin=SWITCH_SEARCH_VERTICAL&sid=8)k")
-time.sleep(10)
+#indo para a área de pessoas para se conectar 
+time.sleep(5)
+busca_pessoas = navegador.get(f"https://www.linkedin.com/search/results/people/?keywords={profissao}&origin=SWITCH_SEARCH_VERTICAL&sid=8)k")
+time.sleep(5)
 
