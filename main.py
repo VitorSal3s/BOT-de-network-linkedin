@@ -8,15 +8,31 @@ import time
 
 #crucial para acessar a página do usuário as informações de login
 #OBS: Nenhuma das informaçõe fornecdidas aqui será acessado por terceiros
-def info_login():
+def info():
+
     print("PRECCISAMOS DE SUAS INFORMAÇÕES DE LOGIN! ")
     email = str(input("DIGITE SEU EMAIL DE ACESSO: "))
     senha = str(input("DIGITE SUA SENHA: "))
 
     return email, senha
 
+def conectar():
+    person_qtd = int(input("QUANTA PESSOAS VOCÊ VAI QUERER ENVIAR UMA NOTA: "))
+    while True:
+        msg = str(input("ESCREVA A MENSAGEM QUE VOCÊ VAI ENVIAR PELA NOTA: "))
+        msg_quantidade = len(msg)
+        if msg_quantidade >= 500:
+            print("VOCÊ EXCEDEU O LIMITE DE CARACATERES PERMITIDO, LIMITE SÃO 500 CARACTERES")
+        elif msg_quantidade <= 500:
+            break
+    return person_qtd, msg
+        
+
+
+
 profissao = input("POR QUAL PROFISSÃO VOCÊ BUSCAR AUMENTAR SUA REDE: ")
-email, senha = info_login()
+email, senha = info()
+person_qtd, msg = conectar()
 #Para especificar qual vai ser o navegador que vamos usar
 navegador = webdriver.Chrome()
 
@@ -37,4 +53,16 @@ time.sleep(5)
 time.sleep(5)
 busca_pessoas = navegador.get(f"https://www.linkedin.com/search/results/people/?keywords={profissao}&origin=SWITCH_SEARCH_VERTICAL&sid=8)k")
 time.sleep(5)
+
+nome = navegador.find_element(By. XPATH,"//span[@aria-hidden='true']")
+informacao_nome = nome.text
+time.sleep(10)
+campo_conectar = navegador.find_element(By. ID, "ember769")
+campo_conectar.click()
+add_nota = navegador.find_element(By. ID, "ember1049")
+add_nota.click()
+campo_nota = navegador.find_element(By. ID, "custom-message")
+campo_nota.send_keys(f"{msg}. Aguardo o seu retorno {informacao_nome} anciosamente")
+campo_nota.submit()
+
 
