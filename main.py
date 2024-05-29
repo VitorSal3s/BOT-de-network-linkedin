@@ -7,7 +7,7 @@ import pyautogui
 import time
 
 #crucial para acessar a página do usuário as informações de login
-#OBS: Nenhuma das informaçõe fornecdidas aqui será acessado por terceiros
+#OBS: A Nenhuma das informaçõe fornecdidas aqui será acessado por terceiros
 def info():
 
     print("PRECCISAMOS DE SUAS INFORMAÇÕES DE LOGIN! ")
